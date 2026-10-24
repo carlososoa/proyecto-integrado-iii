@@ -1,0 +1,70 @@
+RESUMEN DEL DATAFRAME
+==============================================================
+Dataset: t22000t/bike-sharing-tabular
+Split: train
+Generado: 2026-10-24 12:27
+Nota: Dataset completo (sin muestra ni filtros).
+
+DIMENSIONES
+--------------------------------------------------------------
+Filas: 17379
+Columnas: 17
+Memoria aproximada: 2.42 MB
+Filas duplicadas: 0
+Valores nulos totales: 0
+
+COLUMNAS Y TIPOS
+--------------------------------------------------------------
+- instant: int64
+- dteday: str
+- season: int64
+- yr: int64
+- mnth: int64
+- hr: int64
+- holiday: int64
+- weekday: int64
+- workingday: int64
+- weathersit: int64
+- temp: float64
+- atemp: float64
+- hum: float64
+- windspeed: float64
+- casual: int64
+- registered: int64
+- cnt: int64
+
+VALORES NULOS POR COLUMNA
+--------------------------------------------------------------
+- instant: 0 (0.00 %)
+- dteday: 0 (0.00 %)
+- season: 0 (0.00 %)
+- yr: 0 (0.00 %)
+- mnth: 0 (0.00 %)
+- hr: 0 (0.00 %)
+- holiday: 0 (0.00 %)
+- weekday: 0 (0.00 %)
+- workingday: 0 (0.00 %)
+- weathersit: 0 (0.00 %)
+- temp: 0 (0.00 %)
+- atemp: 0 (0.00 %)
+- hum: 0 (0.00 %)
+- windspeed: 0 (0.00 %)
+- casual: 0 (0.00 %)
+- registered: 0 (0.00 %)
+- cnt: 0 (0.00 %)
+
+ESTADISTICAS DESCRIPTIVAS (variables numericas)
+--------------------------------------------------------------
+         instant     season         yr       mnth         hr    holiday    weekday  workingday  weathersit       temp      atemp        hum  windspeed     casual  registered        cnt
+count  17379.000  17379.000  17379.000  17379.000  17379.000  17379.000  17379.000   17379.000   17379.000  17379.000  17379.000  17379.000  17379.000  17379.000   17379.000  17379.000
+mean    8690.000      2.502      0.503      6.538     11.547      0.029      3.004       0.683       1.425      0.497      0.476      0.627      0.190     35.676     153.787    189.463
+std     5017.029      1.107      0.500      3.439      6.914      0.167      2.006       0.465       0.639      0.193      0.172      0.193      0.122     49.305     151.357    181.388
+min        1.000      1.000      0.000      1.000      0.000      0.000      0.000       0.000       1.000      0.020      0.000      0.000      0.000      0.000       0.000      1.000
+25%     4345.500      2.000      0.000      4.000      6.000      0.000      1.000       0.000       1.000      0.340      0.333      0.480      0.104      4.000      34.000     40.000
+50%     8690.000      3.000      1.000      7.000     12.000      0.000      3.000       1.000       1.000      0.500      0.485      0.630      0.194     17.000     115.000    142.000
+75%    13034.500      3.000      1.000     10.000     18.000      0.000      5.000       1.000       2.000      0.660      0.621      0.780      0.254     48.000     220.000    281.000
+max    17379.000      4.000      1.000     12.000     23.000      1.000      6.000       1.000       4.000      1.000      1.000      1.000      0.851    367.000     886.000    977.000
+
+VALORES MAS FRECUENTES (variables no numericas)
+--------------------------------------------------------------
+- dteday: 731 valores distintos (no se listan)
