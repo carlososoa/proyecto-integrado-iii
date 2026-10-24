@@ -140,7 +140,7 @@ Las cinco transformaciones aplicadas son:
 5. **Agrupar y agregar**: demanda promedio por temporada.
 
 El archivo `resumen_dataset.txt` corresponde al **DataFrame transformado**
-(11.865 filas × 15 columnas), no al original.
+(11.865 filas × 16 columnas), no al original.
 
 ---
 
