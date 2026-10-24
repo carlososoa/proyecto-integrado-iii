@@ -52,6 +52,14 @@ en qué momento del calendario.
 │   │   └── EA1_carga_y_transformacion.ipynb
 │   └── resultados/
 │       └── resumen_dataset.txt
+├── AE2/
+│   ├── documento/
+│   │   ├── EA2_proyecto_integrador_etapa1.docx
+│   │   └── EA2_proyecto_integrador_etapa1.pdf
+│   ├── notebooks/
+│   │   └── EA2_reconocimiento_dataset.ipynb
+│   └── resultados/
+│       └── resumen_dataframe.txt
 ├── requirements.txt
 └── README.md
 ```
