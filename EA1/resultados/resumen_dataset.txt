@@ -1,0 +1,67 @@
+RESUMEN DEL DATAFRAME
+==============================================================
+Dataset: t22000t/bike-sharing-tabular
+Split: train
+Generado: 2026-10-24 11:56
+Nota: DataFrame transformado: columnas renombradas, subconjunto seleccionado, solo dias laborables, columnas calculadas agregadas.
+
+DIMENSIONES
+--------------------------------------------------------------
+Filas: 11865
+Columnas: 15
+Memoria aproximada: 1.32 MB
+Filas duplicadas: 0
+Valores nulos totales: 0
+
+COLUMNAS Y TIPOS
+--------------------------------------------------------------
+- fecha: datetime64[us]
+- hora: int64
+- temporada: int64
+- clima: int64
+- dia_laboral: int64
+- dia_semana: int64
+- temp_norm: float64
+- humedad_norm: float64
+- usuarios_casuales: int64
+- usuarios_registrados: int64
+- total_rentas: int64
+- anio: int32
+- temperatura_c: float64
+- humedad_pct: float64
+- franja_horaria: category
+
+VALORES NULOS POR COLUMNA
+--------------------------------------------------------------
+- fecha: 0 (0.00 %)
+- hora: 0 (0.00 %)
+- temporada: 0 (0.00 %)
+- clima: 0 (0.00 %)
+- dia_laboral: 0 (0.00 %)
+- dia_semana: 0 (0.00 %)
+- temp_norm: 0 (0.00 %)
+- humedad_norm: 0 (0.00 %)
+- usuarios_casuales: 0 (0.00 %)
+- usuarios_registrados: 0 (0.00 %)
+- total_rentas: 0 (0.00 %)
+- anio: 0 (0.00 %)
+- temperatura_c: 0 (0.00 %)
+- humedad_pct: 0 (0.00 %)
+- franja_horaria: 0 (0.00 %)
+
+ESTADISTICAS DESCRIPTIVAS (variables numericas)
+--------------------------------------------------------------
+            hora  temporada      clima  dia_laboral  dia_semana  temp_norm  humedad_norm  usuarios_casuales  usuarios_registrados  total_rentas       anio  temperatura_c  humedad_pct
+count  11865.000  11865.000  11865.000      11865.0   11865.000  11865.000     11865.000          11865.000             11865.000     11865.000  11865.000      11865.000    11865.000
+mean      11.558      2.512      1.445          1.0       3.053      0.504         0.629             25.561               167.646       193.208   2011.502         20.673       62.929
+std        6.914      1.097      0.651          0.0       1.394      0.190         0.194             29.130               165.991       185.107      0.500          7.801       19.369
+min        0.000      1.000      1.000          1.0       1.000      0.020         0.000              0.000                 0.000         1.000   2011.000          0.800        0.000
+25%        6.000      2.000      1.000          1.0       2.000      0.340         0.480              3.000                35.000        40.000   2011.000         13.900       48.000
+50%       12.000      3.000      1.000          1.0       3.000      0.520         0.630             14.000               127.000       151.000   2012.000         21.300       63.000
+75%       18.000      3.000      2.000          1.0       4.000      0.660         0.790             40.000               232.000       277.000   2012.000         27.100       79.000
+max       23.000      4.000      4.000          1.0       5.000      0.980         1.000            264.000               886.000       977.000   2012.000         40.200      100.000
+
+VALORES MAS FRECUENTES (variables no numericas)
+--------------------------------------------------------------
+- fecha: 500 valores distintos (no se listan)
+- franja_horaria: tarde (2989), noche (2988), mañana (2976), madrugada (2912)
