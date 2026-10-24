@@ -1,0 +1,11 @@
+# Dependencias del proyecto
+pandas>=2.2
+datasets>=3.0
+
+# Opcional: exportar también a parquet o Excel
+# pyarrow
+# openpyxl
+
+# Opcional: ejecutar el notebook desde la terminal
+# nbconvert
+# ipykernel
