@@ -2,7 +2,7 @@ RESUMEN DEL DATAFRAME
 ==============================================================
 Dataset: t22000t/bike-sharing-tabular
 Split: train
-Generado: 2026-10-24 13:08
+Generado: 2026-10-24 18:28
 Nota: Dataset completo (sin muestra ni filtros).
 
 DIMENSIONES
