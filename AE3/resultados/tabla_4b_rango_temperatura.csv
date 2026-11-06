@@ -1,0 +1,5 @@
+﻿rango_temperatura,horas_registradas,rentas,promedio,mediana
+Fría (≤5 °C),193,9388,48.6,25.0
+Templada (5-15 °C),5248,555609,105.9,70.0
+Cálida (15-25 °C),6103,1160028,190.1,150.0
+Calurosa (>25 °C),5835,1567654,268.7,236.0

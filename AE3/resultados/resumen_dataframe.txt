@@ -1,0 +1,100 @@
+REPORTE DEL DATAFRAME
+============================================================
+Filas: 17379
+Columnas: 40
+Duplicados: 0
+
+Columnas y tipos:
+- instant: int64
+- dteday: datetime64[us]
+- season: int64
+- yr: int64
+- mnth: int64
+- hr: int64
+- holiday: int64
+- weekday: int64
+- workingday: int64
+- weathersit: int64
+- temp: float64
+- atemp: float64
+- hum: float64
+- windspeed: float64
+- casual: int64
+- registered: int64
+- cnt: int64
+- fecha_hora: datetime64[us]
+- temp_c: float64
+- atemp_c: float64
+- hum_pct: float64
+- windspeed_kmh: float64
+- temporada: str
+- clima: str
+- dia_semana: str
+- anio: int64
+- tipo_dia: str
+- dia_completo: bool
+- mes: str
+- es_fin_de_semana: bool
+- franja_horaria: str
+- es_hora_pico: bool
+- pct_casual: float64
+- pct_registered: float64
+- rango_temperatura: category
+- clima_adverso: bool
+- total_dia: int64
+- promedio_hora_dia: float64
+- horas_registradas_dia: int64
+- pct_hora_del_dia: float64
+
+Valores nulos por columna:
+- instant: 0
+- dteday: 0
+- season: 0
+- yr: 0
+- mnth: 0
+- hr: 0
+- holiday: 0
+- weekday: 0
+- workingday: 0
+- weathersit: 0
+- temp: 0
+- atemp: 0
+- hum: 0
+- windspeed: 0
+- casual: 0
+- registered: 0
+- cnt: 0
+- fecha_hora: 0
+- temp_c: 0
+- atemp_c: 0
+- hum_pct: 0
+- windspeed_kmh: 0
+- temporada: 0
+- clima: 0
+- dia_semana: 0
+- anio: 0
+- tipo_dia: 0
+- dia_completo: 0
+- mes: 0
+- es_fin_de_semana: 0
+- franja_horaria: 0
+- es_hora_pico: 0
+- pct_casual: 0
+- pct_registered: 0
+- rango_temperatura: 0
+- clima_adverso: 0
+- total_dia: 0
+- promedio_hora_dia: 0
+- horas_registradas_dia: 0
+- pct_hora_del_dia: 0
+
+Estadísticas numéricas:
+        instant    season        yr      mnth        hr   holiday   weekday  workingday  weathersit      temp     atemp       hum  windspeed    casual  registered       cnt    temp_c   atemp_c   hum_pct  windspeed_kmh      anio  pct_casual  pct_registered  total_dia  promedio_hora_dia  horas_registradas_dia  pct_hora_del_dia
+count 17,379.00 17,379.00 17,379.00 17,379.00 17,379.00 17,379.00 17,379.00   17,379.00   17,379.00 17,379.00 17,379.00 17,379.00  17,379.00 17,379.00   17,379.00 17,379.00 17,379.00 17,379.00 17,379.00      17,379.00 17,379.00   17,379.00       17,379.00  17,379.00          17,379.00              17,379.00         17,379.00
+mean   8,690.00      2.50      0.50      6.54     11.55      0.03      3.00        0.68        1.43      0.50      0.48      0.63       0.19     35.68      153.79    189.46     20.38     23.79     62.72          12.74  2,011.50       17.21           82.79   4,533.69             189.46                  23.85              4.21
+std    5,017.03      1.11      0.50      3.44      6.91      0.17      2.01        0.47        0.64      0.19      0.17      0.19       0.12     49.30      151.36    181.39      7.89      8.59     19.29           8.20      0.50       13.66           13.66   1,917.38              79.39                   0.79              3.48
+min        1.00      1.00      0.00      1.00      0.00      0.00      0.00        0.00        1.00      0.02      0.00      0.00       0.00      0.00        0.00      1.00      0.80      0.00      0.00           0.00  2,011.00        0.00            0.00      22.00              18.38                   1.00              0.01
+25%    4,345.50      2.00      0.00      4.00      6.00      0.00      1.00        0.00        1.00      0.34      0.33      0.48       0.10      4.00       34.00     40.00     13.90     16.70     48.00           7.00  2,011.00        6.35           74.63   3,214.00             133.92                  24.00              1.24
+50%    8,690.00      3.00      1.00      7.00     12.00      0.00      3.00        1.00        1.00      0.50      0.48      0.63       0.19     17.00      115.00    142.00     20.50     24.20     63.00          13.00  2,012.00       14.69           85.31   4,563.00             190.38                  24.00              3.66
+75%   13,034.50      3.00      1.00     10.00     18.00      0.00      5.00        1.00        2.00      0.66      0.62      0.78       0.25     48.00      220.00    281.00     27.10     31.10     78.00          17.00  2,012.00       25.37           93.65   5,986.00             251.29                  24.00              6.34
+max   17,379.00      4.00      1.00     12.00     23.00      1.00      6.00        1.00        4.00      1.00      1.00      1.00       0.85    367.00      886.00    977.00     41.00     50.00    100.00          57.00  2,012.00      100.00          100.00   8,714.00             363.08                  24.00            100.00

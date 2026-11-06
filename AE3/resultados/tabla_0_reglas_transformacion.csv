@@ -1,0 +1,9 @@
+﻿,regla,detalle,registros_afectados
+0,Tipo de fecha,dteday pasó de str a datetime64[us]; se creó fecha_hora,17379
+1,Escalas,"temp→°C, atemp→°C, hum→%, windspeed→km/h (4 columnas nuevas)",17379
+2,Códigos,5 variables categóricas traducidas a etiquetas,17379
+3,Tipos numéricos,conteos y códigos convertidos a entero; sin identificadores decimales (2 columnas revisadas),0
+4,Duplicados,0 horas repetidas en fecha_hora,0
+5,Consistencia cnt,cnt = casual + registered en los 17.379 registros,0
+6,Cobertura,17379 de 17544 horas (165 faltantes en 76 días); no se imputan,0
+7,Selección,se conservan las 17 columnas originales y los 17379 registros: todos aportan a las preguntas,0
