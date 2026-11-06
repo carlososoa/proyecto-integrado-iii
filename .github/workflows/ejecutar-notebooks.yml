@@ -1,4 +1,4 @@
-name: Ejecutar Actividad 1
+name: Ejecutar notebooks
 
 # Se ejecuta en cada push a main: vuelve a correr el notebook desde cero y
 # guarda el .txt generado, para que el repositorio siempre muestre resultados
@@ -12,7 +12,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: ejecutar-actividad-1
+  group: ejecutar-notebooks
   cancel-in-progress: false
 
 jobs:
@@ -45,17 +45,21 @@ jobs:
           jupyter nbconvert --to notebook --execute --inplace \
             --ExecutePreprocessor.timeout=1200 \
             AE2/notebooks/EA2_reconocimiento_dataset.ipynb
+          jupyter nbconvert --to notebook --execute --inplace \
+            --ExecutePreprocessor.timeout=1200 \
+            AE3/notebooks/EA3_transformacion_enriquecimiento.ipynb
 
       - name: Publicar resultados
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add EA1/notebooks EA1/resultados AE2/notebooks AE2/resultados
+          git add EA1/notebooks EA1/resultados AE2/notebooks AE2/resultados \
+            AE3/notebooks AE3/resultados AE3/datos
 
           if git diff --cached --quiet; then
             echo "Sin cambios."
             exit 0
           fi
 
-          git commit -m "chore: actualizar resultados de las actividades 1 y 2 [skip ci]"
+          git commit -m "chore: actualizar resultados de las actividades 1, 2 y 3 [skip ci]"
           git push origin HEAD:main
