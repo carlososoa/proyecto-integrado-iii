@@ -41,6 +41,9 @@ from .hf_loader import HFDatasetLoader
 
 # Igual, pero desde el archivo summarizer.py, trayendo la clase DatasetSummarizer.
 from .summarizer import DatasetSummarizer
+from .transformador import TransformadorBikes
+from .enriquecedor import EnriquecedorBikes
+from .reportes import Reportes
 
 # __all__ define la LISTA PÚBLICA del paquete. Es lo que se exporta cuando
 # alguien escribe `from clases_po import *`.
@@ -48,4 +51,4 @@ from .summarizer import DatasetSummarizer
 # los linters cuáles nombres son de uso público y cuáles son internos.
 # Ojo: los nombres NO listados aquí siguen siendo accesibles si se escriben
 # explícitamente; __all__ solo controla el atajo del asterisco.
-__all__ = ["HFDatasetLoader", "DatasetSummarizer"]
+__all__ = ["HFDatasetLoader", "DatasetSummarizer", "TransformadorBikes", "EnriquecedorBikes", "Reportes"]
