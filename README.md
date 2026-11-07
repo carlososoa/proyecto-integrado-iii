@@ -66,6 +66,9 @@ en qué momento del calendario.
 ├── AE3/
 │   ├── datos/
 │   │   └── dataset_preparado.csv
+│   ├── documento/
+│   │   ├── EA3_proyecto_integrador_etapa2.docx
+│   │   └── EA3_proyecto_integrador_etapa2.pdf
 │   ├── notebooks/
 │   │   └── EA3_transformacion_enriquecimiento.ipynb
 │   └── resultados/
@@ -244,6 +247,7 @@ nuevas y un DataFrame final de **17.379 × 40**.
 | `tabla_2_tipo_dia.csv` | ¿Cambia entre días laborables y no laborables? |
 | `tabla_3a_temporada.csv` | ¿Cambia con la temporada? |
 | `tabla_3b_anio.csv` | ¿Cambia entre 2011 y 2012? |
+| `tabla_3c_temporada_por_anio.csv` | ¿Y dentro de cada temporada? |
 | `tabla_4a_clima.csv` | ¿Cambia con la condición climática? |
 | `tabla_4b_rango_temperatura.csv` | ¿Cambia con la temperatura? |
 | `tabla_5a_tipo_usuario.csv` | ¿Qué peso tienen casuales y registrados? |
