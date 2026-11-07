@@ -9,6 +9,11 @@ from __future__ import annotations
 
 import pandas as pd
 
+
+def miles(valor: int) -> str:
+    """Formatea un entero con separador de miles (punto, uso en español)."""
+    return f"{valor:,}".replace(",", ".")
+
 # Significados tomados del README oficial del dataset (UCI, id 275).
 ESTACIONES = {1: "Primavera", 2: "Verano", 3: "Otoño", 4: "Invierno"}
 CLIMA = {
@@ -84,15 +89,14 @@ class TransformadorBikes:
     # ── 4. Identificadores ───────────────────────────────────────────────
     def revisar_identificadores(self) -> None:
         """Comprueba que los conteos sean enteros y que no haya identificadores decimales."""
-        decimales = [c for c in self.df.select_dtypes("float").columns
-                     if self.df[c].dropna().mod(1).eq(0).all()]
         conteos = ["casual", "registered", "cnt", "hr", "mnth", "yr", "season",
                    "holiday", "weekday", "workingday", "weathersit"]
         for col in conteos:
             self.df[col] = self.df[col].astype("int64")
         self._registrar(
             "Tipos numéricos",
-            f"conteos y códigos convertidos a entero; sin identificadores decimales ({len(decimales)} columnas revisadas)",
+            f"{len(conteos)} columnas de conteo y código convertidas a entero; "
+            "el dataset no trae identificadores con decimales",
             0,
         )
 
@@ -111,7 +115,7 @@ class TransformadorBikes:
         inconsistentes = int((diferencia != 0).sum())
         self._registrar(
             "Consistencia cnt",
-            "cnt = casual + registered en los 17.379 registros" if not inconsistentes
+            f"cnt = casual + registered en los {miles(len(self.df))} registros" if not inconsistentes
             else f"{inconsistentes} registros no cumplen cnt = casual + registered",
             inconsistentes,
         )
@@ -127,7 +131,7 @@ class TransformadorBikes:
         self.df["dia_completo"] = self.df["dteday"].map(por_dia.eq(24))
         self._registrar(
             "Cobertura",
-            f"{len(self.df)} de {esperadas} horas ({faltantes} faltantes en {dias_incompletos} días); no se imputan",
+            f"{miles(len(self.df))} de {miles(esperadas)} horas ({miles(faltantes)} faltantes en {dias_incompletos} días); no se imputan",
             0,
         )
 
@@ -142,7 +146,7 @@ class TransformadorBikes:
         """
         self._registrar(
             "Selección",
-            f"se conservan las {self.n_columnas_originales} columnas originales y los {len(self.df)} registros: todos aportan a las preguntas",
+            f"se conservan las {self.n_columnas_originales} columnas originales y los {miles(len(self.df))} registros: todos aportan a las preguntas",
             0,
         )
 
