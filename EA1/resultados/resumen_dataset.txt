@@ -2,7 +2,7 @@ RESUMEN DEL DATAFRAME
 ==============================================================
 Dataset: t22000t/bike-sharing-tabular
 Split: train
-Generado: 2026-11-08 00:58
+Generado: 2026-11-08 01:09
 Nota: DataFrame transformado: columnas renombradas, subconjunto seleccionado, solo dias laborables, columnas calculadas agregadas.
 
 DIMENSIONES
