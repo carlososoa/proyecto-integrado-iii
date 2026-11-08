@@ -2,10 +2,7 @@
 pandas>=2.2
 datasets>=3.0
 
-# Opcional: exportar también a parquet o Excel
-# pyarrow
-# openpyxl
-
-# Opcional: ejecutar el notebook desde la terminal
-# nbconvert
-# ipykernel
+# Para ejecutar los notebooks (ver «Cómo ejecutar» en el README)
+jupyterlab>=4.0
+nbconvert>=7.16
+ipykernel>=6.29
