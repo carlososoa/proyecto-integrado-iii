@@ -233,6 +233,7 @@ def tabla_preguntas() -> list[dict]:
     return [
         {
             "id": "p1",
+            "corto": "Demanda y reparto del día",
             "pregunta": "¿Cuánta demanda hay y cómo se reparte en el día?",
             "metrica": "Rentas totales, promedio y mediana por hora",
             "unidad": "rentas (conteo) / rentas por hora",
@@ -240,6 +241,7 @@ def tabla_preguntas() -> list[dict]:
         },
         {
             "id": "p2",
+            "corto": "Franjas horarias",
             "pregunta": "¿En qué franjas horarias se concentra la demanda?",
             "metrica": "Participación de cada franja sobre el total y veces el promedio",
             "unidad": "% del total / múltiplo del promedio",
@@ -247,6 +249,7 @@ def tabla_preguntas() -> list[dict]:
         },
         {
             "id": "p3",
+            "corto": "Tipo de día",
             "pregunta": "¿Cambia la demanda según el tipo de día?",
             "metrica": "Promedio por hora y participación del usuario ocasional, laborable vs. no laborable",
             "unidad": "rentas por hora / %",
@@ -254,6 +257,7 @@ def tabla_preguntas() -> list[dict]:
         },
         {
             "id": "p4",
+            "corto": "Temporada y año",
             "pregunta": "¿Cambia con la temporada y entre 2011 y 2012?",
             "metrica": "Promedio por temporada y variación porcentual 2011→2012",
             "unidad": "rentas por hora / % de variación",
@@ -261,6 +265,7 @@ def tabla_preguntas() -> list[dict]:
         },
         {
             "id": "p5",
+            "corto": "Clima y temperatura",
             "pregunta": "¿Cambia con el clima y la temperatura?",
             "metrica": "Promedio por condición climática y por rango de temperatura",
             "unidad": "rentas por hora",
@@ -268,6 +273,7 @@ def tabla_preguntas() -> list[dict]:
         },
         {
             "id": "p6",
+            "corto": "Casuales y registrados",
             "pregunta": "¿Qué peso tienen los usuarios casuales y los registrados?",
             "metrica": "Participación de cada tipo de usuario y su comportamiento por tipo de día",
             "unidad": "% del total de rentas",

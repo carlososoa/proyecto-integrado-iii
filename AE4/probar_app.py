@@ -14,12 +14,12 @@ from streamlit.testing.v1 import AppTest
 APP = Path(__file__).resolve().parent / "app.py"
 VISTAS = [
     "Resumen del periodo",
-    "1. ¿Cuánta demanda hay y cómo se reparte en el día?",
-    "2. ¿En qué franjas horarias se concentra la demanda?",
-    "3. ¿Cambia la demanda según el tipo de día?",
-    "4. ¿Cambia con la temporada y entre 2011 y 2012?",
-    "5. ¿Cambia con el clima y la temperatura?",
-    "6. ¿Qué peso tienen los usuarios casuales y los registrados?",
+    "1 · Demanda y reparto del día",
+    "2 · Franjas horarias",
+    "3 · Tipo de día",
+    "4 · Temporada y año",
+    "5 · Clima y temperatura",
+    "6 · Casuales y registrados",
 ]
 
 fallos = 0

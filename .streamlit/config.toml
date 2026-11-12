@@ -1,0 +1,18 @@
+# Tema fijo de la aplicación.
+#
+# La app está diseñada sobre fondo claro (tarjetas blancas, texto oscuro y una
+# paleta propia en los gráficos). Si se deja que Streamlit siga el tema del
+# sistema, un visitante con el escritorio en modo oscuro ve texto claro sobre
+# las tarjetas blancas: ilegible. Por eso el tema se fija aquí y no depende del
+# sistema operativo de quien abre la aplicación.
+
+[theme]
+base = "light"
+primaryColor = "#0F5C6B"
+backgroundColor = "#F6F3EC"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#2E2E2E"
+font = "sans serif"
+
+[browser]
+gatherUsageStats = false

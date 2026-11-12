@@ -45,20 +45,25 @@ COLORES_USUARIO = {"Registrado": AZUL, "Casual": TERRACOTA}
 st.markdown(
     f"""
     <style>
-      .stApp {{ background: {ARENA}; }}
+      /* El tema está fijado en .streamlit/config.toml (base clara): estos colores
+         no dependen del modo oscuro del sistema operativo de quien abre la app. */
+      .stApp {{ background: {ARENA}; color: #2E2E2E; }}
       h1, h2, h3 {{ color: {AZUL}; letter-spacing: -0.01em; }}
       .bloque {{ background: #FFFFFF; border-radius: 14px; padding: 1.1rem 1.3rem;
-                 border: 1px solid #E6E0D4; box-shadow: 0 1px 2px rgba(0,0,0,.04); }}
+                 border: 1px solid #E6E0D4; box-shadow: 0 1px 2px rgba(0,0,0,.04);
+                 color: #2E2E2E; }}
       .etiqueta {{ color: {GRIS}; font-size: .78rem; text-transform: uppercase;
                    letter-spacing: .08em; margin-bottom: .15rem; }}
       .cifra {{ color: {AZUL}; font-size: 1.7rem; font-weight: 700; line-height: 1.1; }}
       .unidad {{ color: {GRIS}; font-size: .8rem; }}
       .respuesta {{ background: #EAF2F4; border-left: 4px solid {AZUL};
-                    padding: .8rem 1rem; border-radius: 6px; font-size: 1rem; }}
+                    padding: .8rem 1rem; border-radius: 6px; font-size: 1rem;
+                    color: #24414A; }}
       .decision {{ background: #EAF5F0; border-left: 4px solid {VERDE};
-                   padding: .8rem 1rem; border-radius: 6px; }}
+                   padding: .8rem 1rem; border-radius: 6px; color: #24413B; }}
       .limite {{ background: #FBF1E8; border-left: 4px solid {TERRACOTA};
-                 padding: .8rem 1rem; border-radius: 6px; }}
+                 padding: .8rem 1rem; border-radius: 6px; color: #4A3327; }}
+      .respuesta strong, .decision strong, .limite strong {{ color: inherit; }}
       .pie {{ color: {GRIS}; font-size: .8rem; }}
     </style>
     """,
@@ -183,8 +188,8 @@ st.divider()
 # Navegación por pregunta
 # ---------------------------------------------------------------------------
 preguntas = m.tabla_preguntas()
-opciones = ["Resumen del periodo"] + [f"{i + 1}. {p['pregunta']}" for i, p in enumerate(preguntas)]
-seleccion = st.radio("Recorre el proyecto", opciones, horizontal=True, label_visibility="collapsed")
+opciones = ["Resumen del periodo"] + [f"{i + 1} · {p['corto']}" for i, p in enumerate(preguntas)]
+seleccion = st.sidebar.radio("Recorrido del proyecto", opciones, index=0)
 indice = opciones.index(seleccion) - 1  # -1 = resumen
 
 # ---------------------------------------------------------------------------
