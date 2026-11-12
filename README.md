@@ -80,8 +80,12 @@ en qué momento del calendario.
 │   ├── metricas.py             # cálculo de métricas (fuente única de los números)
 │   ├── verificar_metricas.py   # contrasta las cifras contra las tablas de la AE3
 │   ├── probar_app.py           # recorre las 7 vistas y valida que no fallen
+│   ├── construir_documento_final.py  # genera el informe integral (Word y PDF)
 │   ├── GUIA_EQUIPO.md          # guía de estudio y preguntas del docente
-│   └── documento/              # informe integral del proyecto (PDF)
+│   ├── GUION_PRESENTACION.md   # guion cronometrado de la sustentación
+│   └── documento/
+│       ├── PI3_proyecto_integrador_analitica_datos_grupo3.pdf
+│       └── figuras/            # figuras y captura de la aplicación
 ├── requirements.txt
 └── README.md
 ```
@@ -226,6 +230,16 @@ temporada, tipo de día y clima) recalculan todos los indicadores y gráficos.
   con el `AppTest` de Streamlit y reporta cualquier excepción.
 
 **Aplicación publicada:** <https://proyecto-integrado-iii-team3-preica2602b020038.streamlit.app/>
+
+### Informe final
+
+El informe integral del proyecto está en
+`AE4/documento/PI3_proyecto_integrador_analitica_datos_grupo3.pdf` (28 páginas,
+21 tablas y 7 figuras). Reúne las cuatro etapas en un solo documento y se
+regenera con `python AE4/construir_documento_final.py`, que calcula las cifras
+con el mismo módulo de la aplicación.
+
+El guion cronometrado de la sustentación está en `AE4/GUION_PRESENTACION.md`.
 
 El notebook de la AE3 regenera en cada ejecución:
 
