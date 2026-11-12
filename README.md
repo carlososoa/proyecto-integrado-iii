@@ -3,9 +3,10 @@
 Repositorio del proyecto del curso **Proyecto Integrado III - Analítica de Datos**
 (IU Digital de Antioquia, 2026-Q4).
 
-Contiene las **clases reutilizables** del proyecto y los notebooks de las tres
-etapas entregadas: carga y transformación (EA1), reconocimiento del dataset
-(AE2) y transformación con enriquecimiento (AE3).
+Contiene las **clases reutilizables** del proyecto, los notebooks de las tres
+primeras etapas —carga y transformación (EA1), reconocimiento del dataset (AE2)
+y transformación con enriquecimiento (AE3)— y la **aplicación en Streamlit** de
+la etapa final (AE4), que responde las seis preguntas de negocio del proyecto.
 
 ---
 
@@ -74,6 +75,13 @@ en qué momento del calendario.
 │   └── resultados/
 │       ├── resumen_dataframe.txt
 │       └── tabla_*.csv
+├── AE4/
+│   ├── app.py                  # aplicación Streamlit de la etapa 4
+│   ├── metricas.py             # cálculo de métricas (fuente única de los números)
+│   ├── verificar_metricas.py   # contrasta las cifras contra las tablas de la AE3
+│   ├── probar_app.py           # recorre las 7 vistas y valida que no fallen
+│   ├── GUIA_EQUIPO.md          # guía de estudio y preguntas del docente
+│   └── documento/              # informe integral del proyecto (PDF)
 ├── requirements.txt
 └── README.md
 ```
@@ -198,6 +206,28 @@ cd ../../AE3/notebooks
 jupyter nbconvert --to notebook --execute --inplace EA3_transformacion_enriquecimiento.ipynb
 ```
 
+### Aplicación en Streamlit (AE4)
+
+```bash
+# desde la raíz del repositorio
+streamlit run AE4/app.py
+```
+
+La aplicación abre en `http://localhost:8501`. Recorre el resumen del periodo y
+las seis preguntas de negocio; los filtros de la barra lateral (periodo,
+temporada, tipo de día y clima) recalculan todos los indicadores y gráficos.
+
+- **Cálculo:** `AE4/metricas.py` concentra las métricas. La app, el documento y
+  el script de verificación usan las mismas funciones, de modo que una cifra no
+  puede decir cosas distintas en dos lugares.
+- **Verificación de cifras:** `python AE4/verificar_metricas.py` compara los
+  cálculos contra las tablas `.csv` de la AE3 y falla si alguna cifra no cuadra.
+- **Prueba de la interfaz:** `python AE4/probar_app.py` ejecuta las siete vistas
+  con el `AppTest` de Streamlit y reporta cualquier excepción.
+
+Aplicación publicada: _(enlace de Streamlit Community Cloud — se agrega al
+desplegar desde este repositorio)._
+
 El notebook de la AE3 regenera en cada ejecución:
 
 - `AE3/datos/dataset_preparado.csv` — DataFrame final (17.379 × 40).
@@ -254,6 +284,21 @@ nuevas y un DataFrame final de **17.379 × 40**.
 | `tabla_5b_usuario_por_tipo_dia.csv` | ¿Y según el tipo de día? |
 | `tabla_6a_concentracion_horaria.csv` | ¿Cuánto pesa una hora dentro de su día? |
 | `tabla_6b_dias_mayor_demanda.csv` | ¿Qué días concentran más rentas? |
+
+### AE4 · Métricas y visualización
+
+Convierte las tablas de la AE3 en una aplicación que responde las seis preguntas
+de negocio: cada sección declara la métrica, su unidad, el gráfico, la lectura de
+los datos, la decisión que puede apoyar y la limitación del análisis.
+
+| # | Pregunta | Métrica | Unidad |
+|---|---|---|---|
+| 1 | ¿Cuánta demanda hay y cómo se reparte en el día? | rentas totales, promedio y mediana por hora | rentas/hora |
+| 2 | ¿En qué franjas horarias se concentra? | participación de cada franja y veces el promedio | % y múltiplo |
+| 3 | ¿Cambia según el tipo de día? | promedio por hora y peso del usuario ocasional | rentas/hora y % |
+| 4 | ¿Cambia con la temporada y entre 2011 y 2012? | promedio por temporada y variación anual | rentas/hora y % |
+| 5 | ¿Cambia con el clima y la temperatura? | promedio por condición y por rango de temperatura | rentas/hora |
+| 6 | ¿Qué peso tienen casuales y registrados? | participación de cada tipo de usuario | % |
 
 ---
 

@@ -6,3 +6,7 @@ datasets>=3.0
 jupyterlab>=4.0
 nbconvert>=7.16
 ipykernel>=6.29
+
+# Aplicación de la etapa 4 (Streamlit)
+streamlit>=1.40
+plotly>=5.22
