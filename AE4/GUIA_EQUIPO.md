@@ -110,13 +110,17 @@ el dataset **no permite afirmar causas** ni proyectar años futuros.
 
 ## 5. Cómo se usa la app (recorrido para la demo)
 
-1. **Resumen del periodo**: gráfico de demanda promedio por hora + participación por franja + tabla de las seis preguntas.
-2. **Filtros (barra izquierda)**: periodo, temporada, tipo de día y clima. Todo se recalcula.
-3. **Preguntas 1 a 6**: cada una muestra la métrica con su unidad, el gráfico, la lectura, la decisión que apoya y la limitación.
-4. **Tablas desplegables**: cada sección tiene la tabla exacta de respaldo (las mismas cifras del documento).
+La aplicación tiene nueve secciones y con eso se puede hacer **toda la presentación sin diapositivas**:
 
-Demostración sugerida para los 6 minutos: resumen (1 min) → pregunta 2 con filtro a "No laborable" (1 min)
-→ pregunta 5 cambiando el clima (1 min) → pregunta 6 (1 min) → conclusiones (1 min) → cierre (1 min).
+1. **Proyecto y datos** (apertura): necesidad, pregunta de análisis, alcance y ficha del dataset.
+2. **Resumen del periodo**: gráfico de demanda promedio por hora + participación por franja + tabla de las seis preguntas.
+3. **Filtros (barra izquierda)**: periodo, temporada, tipo de día y clima. Todo se recalcula.
+4. **Preguntas 1 a 6**: cada una muestra la métrica con su unidad, el gráfico, la lectura, la decisión que apoya y la limitación.
+5. **Tablas desplegables**: cada sección tiene la tabla exacta de respaldo (las mismas cifras del documento).
+6. **Conclusiones y recomendaciones** (cierre): cuatro tarjetas de conclusión, cinco recomendaciones y el bloque de lo que el análisis no afirma.
+
+Demostración sugerida para los 5 minutos: apertura (30 s) → resumen (30 s) → pregunta 2 con filtro a "No laborable"
+(40 s) → pregunta 5 cambiando el clima (30 s) → pregunta 6 (30 s) → cierre en conclusiones (1 min).
 
 ---
 

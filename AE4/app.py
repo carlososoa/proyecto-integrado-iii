@@ -184,18 +184,185 @@ st.markdown(
 
 st.divider()
 
-# ---------------------------------------------------------------------------
-# Navegación por pregunta
-# ---------------------------------------------------------------------------
-preguntas = m.tabla_preguntas()
-opciones = ["Resumen del periodo"] + [f"{i + 1} · {p['corto']}" for i, p in enumerate(preguntas)]
-seleccion = st.sidebar.radio("Recorrido del proyecto", opciones, index=0)
-indice = opciones.index(seleccion) - 1  # -1 = resumen
 
 # ---------------------------------------------------------------------------
-# Vista 0 — Resumen del periodo
+# Vistas de apertura y cierre
 # ---------------------------------------------------------------------------
-if indice == -1:
+@st.cache_data(show_spinner=False)
+def resumen_completo() -> dict:
+    """Cifras del periodo completo, para contrastar cuando hay filtros activos."""
+    franjas = m.por_franja(df_total)
+    anios = m.por_anio(df_total)
+    usuarios = m.por_tipo_usuario(df_total).set_index("tipo_usuario")
+    return {
+        "rentas": int(df_total["cnt"].sum()),
+        "promedio": float(df_total["cnt"].mean()),
+        "franja_top": str(franjas.loc[franjas["participacion_pct"].idxmax(), "franja_horaria"]),
+        "franja_pct": float(franjas["participacion_pct"].max()),
+        "crecimiento": float(100 * (anios["promedio"].iloc[-1] / anios["promedio"].iloc[0] - 1)),
+        "registrado_pct": float(usuarios.loc["Registrado", "participacion_pct"]),
+    }
+
+
+def vista_proyecto() -> None:
+    """Apertura: necesidad, pregunta, alcance y ficha de los datos."""
+    st.markdown("### El proyecto y los datos")
+    st.markdown(
+        "Un sistema de bicicletas públicas necesita saber **cuándo se usa más y bajo qué condiciones**, "
+        "porque de eso dependen tres decisiones de operación: cuántas bicicletas tener disponibles por "
+        "zona, cuántas personas destinar a reubicarlas entre estaciones y cuándo programar el "
+        "mantenimiento sin afectar el servicio."
+    )
+
+    izquierda, derecha = st.columns([3, 2])
+    with izquierda:
+        st.markdown("#### La pregunta de análisis")
+        st.markdown(
+            "Describir cómo se distribuye la demanda de rentas a lo largo del día y cómo cambia según "
+            "el tipo de día, la temporada y el clima, para apoyar decisiones de capacidad, personal y "
+            "mantenimiento."
+        )
+        st.markdown("#### Cómo se responde")
+        st.markdown(
+            "La pregunta se descompone en seis preguntas de negocio. Cada una tiene una métrica con su "
+            "unidad, un gráfico y una tabla de resultados, de modo que cualquier afirmación se pueda "
+            "rastrear hasta un cálculo."
+        )
+        st.info(
+            "**Alcance:** el análisis es descriptivo y comparativo. No explica causas ni predice "
+            "valores futuros, y no habla de ingresos ni rentabilidad porque los datos no traen precios "
+            "ni costos."
+        )
+        st.markdown("#### Cómo se garantiza que las cifras sean las mismas")
+        st.markdown(
+            "- La app, el documento y el script de verificación usan **el mismo módulo de cálculo** \n"
+            "- **53 comprobaciones** contrastan las cifras de la app contra las tablas del análisis \n"
+            "- Los notebooks se **re-ejecutan en cada cambio** del repositorio"
+        )
+
+    with derecha:
+        st.markdown(tarjeta("Sistema observado", "Capital Bikeshare", "Washington D. C."), unsafe_allow_html=True)
+        st.markdown(tarjeta("Periodo", "2011 – 2012", f"{num(k_total['dias'])} días de operación"), unsafe_allow_html=True)
+        st.markdown(tarjeta("Registros", num(k_total["horas"]), "horas de operación"), unsafe_allow_html=True)
+        st.markdown(tarjeta("Cobertura", f"{num(m.cobertura_pct(df_total), 1)} %", f"{num(k_total['horas_faltantes'])} horas sin registro"), unsafe_allow_html=True)
+        st.caption("Fuente: UCI Machine Learning Repository (id 275) · licencia CC-BY-4.0 · cada fila es **una hora**, no un viaje.")
+
+    st.markdown("#### Las seis preguntas de negocio")
+    tabla = pd.DataFrame(
+        [{"#": i + 1, "Pregunta": p["pregunta"], "Métrica": p["metrica"], "Unidad": p["unidad"]} for i, p in enumerate(preguntas)]
+    )
+    st.dataframe(tabla, hide_index=True)
+
+    st.markdown(
+        f"Repositorio con el código, los notebooks ejecutados y el informe: "
+        f"[github.com/carlososoa/proyecto-integrado-iii]({'https://github.com/carlososoa/proyecto-integrado-iii'})"
+    )
+
+
+def vista_conclusiones() -> None:
+    """Cierre: conclusiones, recomendaciones, limitaciones y lo que no se afirma."""
+    st.markdown("### Conclusiones y recomendaciones")
+
+    franjas = m.por_franja(df)
+    usuarios = m.por_tipo_usuario(df).set_index("tipo_usuario")
+    temp = m.por_temporada(df).set_index("temporada")
+    anios = m.por_anio(df).set_index("anio")
+    clima = m.por_clima(df).set_index("clima")
+    franja_top = franjas.loc[franjas["participacion_pct"].idxmax()]
+    pico = float(franjas[franjas["franja_horaria"].isin(["Pico mañana", "Pico tarde"])]["participacion_pct"].sum())
+    temp_top = temp.loc[temp["promedio"].idxmax()]
+    temp_floja = temp.loc[temp["promedio"].idxmin()]
+    despejado = clima.loc["Despejado", "promedio"] if "Despejado" in clima.index else None
+    lluvia = clima.loc["Lluvia o nieve ligera", "promedio"] if "Lluvia o nieve ligera" in clima.index else None
+    caida = 100 * (1 - lluvia / despejado) if despejado and lluvia else None
+    crecimiento = 100 * (anios.loc[2012, "promedio"] / anios.loc[2011, "promedio"] - 1) if 2012 in anios.index and 2011 in anios.index else None
+
+    st.caption(
+        f"Cifras calculadas con el periodo seleccionado ({periodo}). "
+        + ("Cambian con los filtros; el informe las reporta con el periodo completo." if k["horas"] != k_total["horas"] else "Es el periodo completo del dataset.")
+    )
+
+    st.markdown("#### Cuatro conclusiones")
+    c1, c2 = st.columns(2)
+    with c1:
+        st.markdown(
+            tarjeta("La demanda no es uniforme", f"{num(k['promedio'], 1)} vs {num(k['mediana'])}",
+                    "promedio y mediana por hora: hay horas muy cargadas y muchas flojas"),
+            unsafe_allow_html=True,
+        )
+        st.markdown(
+            tarjeta("Se concentra en la tarde", f"{num(franja_top['participacion_pct'], 1)} %",
+                    f"de las rentas en {franja_top['franja_horaria']} · las dos horas pico suman {num(pico, 1)} %"),
+            unsafe_allow_html=True,
+        )
+    with c2:
+        st.markdown(
+            tarjeta("El calendario y el clima la modulan",
+                    f"{num(temp_top['promedio'], 1)} vs {num(temp_floja['promedio'], 1)}",
+                    f"rentas/hora en {temp_top.name} y en {temp_floja.name}"),
+            unsafe_allow_html=True,
+        )
+        st.markdown(
+            tarjeta("El usuario registrado sostiene el servicio", f"{num(usuarios.loc['Registrado', 'participacion_pct'], 1)} %",
+                    f"de las rentas · el ocasional aporta el {num(usuarios.loc['Casual', 'participacion_pct'], 1)} %"),
+            unsafe_allow_html=True,
+        )
+
+    if k["horas"] != k_total["horas"]:
+        ref = resumen_completo()
+        st.caption(
+            f"Referencia con el periodo completo: {num(ref['rentas'])} rentas · {num(ref['promedio'], 1)} por hora · "
+            f"{num(ref['franja_pct'], 1)} % en {ref['franja_top']} · crecimiento {num(ref['crecimiento'], 1)} % entre 2011 y 2012."
+        )
+
+    st.markdown("#### Recomendaciones para la operación")
+    recomendaciones = [
+        ("Planear por franja, no por día", "La ventana de 16:00 a 19:00 concentra la mayor presión; la de 0:00 a 5:00 es la de menor actividad."),
+        ("Tratar el fin de semana como otra operación", "El perfil cambia: meseta de mediodía y más peso del usuario ocasional."),
+        ("Mover el mantenimiento a la madrugada", "Es cuando menos rentas se pierden por interrupción del servicio."),
+        ("Anticipar capacidad con estacionalidad y clima", "Reforzar flota y personal en temporada alta y en días secos."),
+        ("Decidir con la app abierta", "Permite contrastar una decisión con la cifra que la sustenta en el momento."),
+    ]
+    for titulo, texto in recomendaciones:
+        st.markdown(f"**{titulo}.** {texto}")
+
+    st.markdown("#### Lo que este análisis no afirma")
+    caja("limite", "Límites del alcance",
+         "No se atribuyen causas: clima, temporada y tipo de día se mueven juntos. No se habla de ingresos ni "
+         "rentabilidad: el dataset no trae precios ni costos. No se mide la demanda insatisfecha: se registran "
+         "los viajes que ocurrieron, no los que se frustraron por falta de bicicletas. No hay usuarios únicos: "
+         "casual y registrado son tipos de renta, no personas.")
+
+    if caida is not None and crecimiento is not None:
+        st.markdown(
+            f"**En una frase:** la demanda es predecible en su forma —dos picos en día laborable, valle "
+            f"nocturno, más volumen en temporada alta y caída de {num(caida, 1)} % con lluvia— y creciente "
+            f"en su volumen ({num(crecimiento, 1)} % más de promedio por hora entre 2011 y 2012), lo que "
+            "permite planear la operación con evidencia y no con intuición."
+        )
+
+# ---------------------------------------------------------------------------
+# Navegación
+# ---------------------------------------------------------------------------
+preguntas = m.tabla_preguntas()
+opciones = (
+    ["Proyecto y datos", "Resumen del periodo"]
+    + [f"{i + 1} · {p['corto']}" for i, p in enumerate(preguntas)]
+    + ["Conclusiones y recomendaciones"]
+)
+seleccion = st.sidebar.radio("Recorrido del proyecto", opciones, index=1)
+pos = opciones.index(seleccion)
+
+# ---------------------------------------------------------------------------
+# Vista 0 — Proyecto y datos
+# ---------------------------------------------------------------------------
+if pos == 0:
+    vista_proyecto()
+
+# ---------------------------------------------------------------------------
+# Vista 1 — Resumen del periodo
+# ---------------------------------------------------------------------------
+elif pos == 1:
     st.markdown("### Qué se hizo y cómo se lee esta aplicación")
     st.markdown(
         "El proyecto prepara 17.379 horas de operación (2011–2012) y las resume en seis preguntas de negocio. "
@@ -238,23 +405,14 @@ if indice == -1:
     )
     st.dataframe(tabla, hide_index=True)
 
-    st.markdown("#### Conclusiones del periodo")
-    usuarios = m.por_tipo_usuario(df).set_index("tipo_usuario")
-    st.markdown(
-        f"- La demanda no se reparte de forma uniforme: **{num(franjas['participacion_pct'].max(), 1)} %** de las rentas "
-        f"ocurre en la franja de mayor peso (**{franjas.loc[franjas['participacion_pct'].idxmax(), 'franja_horaria']}**).\n"
-        f"- El promedio por hora ({num(k['promedio'], 1)}) es mayor que la mediana ({num(k['mediana'])}): "
-        "hay horas de baja demanda y pocas horas muy cargadas, no un comportamiento parejo.\n"
-        f"- El usuario registrado concentra **{num(usuarios.loc['Registrado', 'participacion_pct'], 1)} %** de las rentas: "
-        "es un servicio de movilidad cotidiana más que de uso recreativo.\n"
-        "- La lectura es **descriptiva y comparativa**: no se atribuyen causas ni se predicen valores futuros."
-    )
+    st.info("Las conclusiones completas están en **Conclusiones y recomendaciones**, al final del recorrido.")
 
-# ---------------------------------------------------------------------------
-# Preguntas
-# ---------------------------------------------------------------------------
+
+elif pos == len(opciones) - 1:
+    vista_conclusiones()
+
 else:
-    p = preguntas[indice]
+    p = preguntas[pos - 2]
     st.markdown(f"### {p['pregunta']}")
     st.caption(f"Métrica: {p['metrica']} · Unidad: {p['unidad']} · Periodo: {periodo}")
 

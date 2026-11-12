@@ -1259,12 +1259,13 @@ def aplicacion(doc: Document) -> None:
     parrafo_enlace(doc, "Dirección de la aplicación: ", APP, APP, ".")
     seccion(doc, 2, "10.1. Estructura y navegación")
     parrafo(doc, "La pantalla se organiza en tres zonas. En la barra lateral están los filtros —periodo, "
-                 "temporada, tipo de día y clima— y el recorrido por las secciones: un resumen del "
-                 "periodo y una entrada por cada pregunta. En el cuerpo, cada sección repite la misma "
-                 "estructura: la pregunta, la métrica con su unidad, los indicadores del periodo "
-                 "filtrado, el gráfico y tres bloques de lectura —qué muestran los datos, qué decisión "
-                 "pueden apoyar y cuál es su limitación—. Al pie, la fuente de los datos y la "
-                 "identificación del grupo.")
+                 "temporada, tipo de día y clima— y el recorrido por las secciones: una apertura con la "
+                 "necesidad, la pregunta, el alcance y la ficha de los datos; un resumen del periodo; una "
+                 "entrada por cada pregunta; y un cierre con conclusiones, recomendaciones y "
+                 "limitaciones. En el cuerpo, cada sección de preguntas repite la misma estructura: la "
+                 "pregunta, la métrica con su unidad, los indicadores del periodo filtrado, el gráfico y "
+                 "tres bloques de lectura —qué muestran los datos, qué decisión pueden apoyar y cuál es su "
+                 "limitación—. Al pie, la fuente de los datos y la identificación del grupo.")
     parrafo(doc, "Los filtros recalculan todos los indicadores y gráficos sobre el subconjunto "
                  "seleccionado. Esa decisión tiene un costo de interpretación que la aplicación hace "
                  "explícito: al filtrar, las participaciones se recalculan sobre el nuevo total y el "
@@ -1299,11 +1300,13 @@ def aplicacion(doc: Document) -> None:
               "máquina con las dependencias instaladas.")
 
     seccion(doc, 2, "10.3. Uso previsto en la presentación")
-    parrafo(doc, "La aplicación está pensada para demostrarse en vivo en diez minutos: el resumen del "
-                 "periodo sitúa el problema y las cifras generales, y luego cada pregunta se abre con un "
-                 "filtro distinto para mostrar que los indicadores responden. La recomendación operativa "
-                 "es abrirla unos minutos antes de la presentación, porque los servicios gratuitos de "
-                 "alojamiento suspenden las aplicaciones inactivas y tardan en reactivarse.")
+    parrafo(doc, "La aplicación está pensada para demostrarse en vivo en diez minutos y de principio a "
+                 "fin: la apertura presenta el problema y los datos, el resumen sitúa las cifras "
+                 "generales, cada pregunta se abre con el gráfico y su lectura, y el cierre reúne las "
+                 "conclusiones y las recomendaciones. La sustentación no necesita diapositivas ni "
+                 "cambiar de herramienta. La recomendación operativa es abrirla unos minutos antes, "
+                 "porque los servicios gratuitos de alojamiento suspenden las aplicaciones inactivas y "
+                 "tardan en reactivarse.")
 
 
 # ── 11. Conclusiones ──────────────────────────────────────────────────────

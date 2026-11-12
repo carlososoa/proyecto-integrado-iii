@@ -217,9 +217,11 @@ jupyter nbconvert --to notebook --execute --inplace EA3_transformacion_enriqueci
 streamlit run AE4/app.py
 ```
 
-La aplicación abre en `http://localhost:8501`. Recorre el resumen del periodo y
-las seis preguntas de negocio; los filtros de la barra lateral (periodo,
-temporada, tipo de día y clima) recalculan todos los indicadores y gráficos.
+La aplicación abre en `http://localhost:8501`. Recorre nueve secciones —proyecto
+y datos, resumen del periodo, las seis preguntas de negocio y conclusiones y
+recomendaciones—; los filtros de la barra lateral (periodo, temporada, tipo de
+día y clima) recalculan todos los indicadores y gráficos, y permiten hacer la
+sustentación completa sin diapositivas.
 
 - **Cálculo:** `AE4/metricas.py` concentra las métricas. La app, el documento y
   el script de verificación usan las mismas funciones, de modo que una cifra no

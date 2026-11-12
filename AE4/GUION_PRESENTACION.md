@@ -13,7 +13,7 @@
 | 6:40 | Abrir la app para despertarla: `https://proyecto-integrado-iii-team3-preica2602b020038.streamlit.app/` |
 | 6:45 | Entrar al Meet con cámara y micrófono probados. Ceñir el tiempo: el profesor tiene 3 grupos. |
 | 6:50 | Tener abiertas en pestañas: (1) la app, (2) el PDF del informe en la página de conclusiones, (3) la lista de respuestas rápidas (sección 5 de este guion). |
-| 6:55 | Compartir pantalla con la app ya cargada en "Resumen del periodo" y zoom del navegador en 100 %. |
+| 6:55 | Compartir pantalla con la app ya cargada en **"Proyecto y datos"** (la primera sección) y zoom del navegador en 100 %. |
 | 6:58 | Silenciar notificaciones; cerrar chat y correo. |
 
 **Si la app no responde:** recargar una vez. Si sigue caída, usar el PDF del informe (sección 9) y las capturas de las figuras. Nunca improvisar cifras: todas están en el documento.
@@ -86,15 +86,17 @@
 
 ## 3. Coreografía de la demo (para no perderse)
 
-1. Abrir en **"Resumen del periodo"**.
-2. Señalar las cuatro tarjetas de indicadores (rentas, promedio, mediana, horas).
+1. Abrir en **"Proyecto y datos"** — es la sección de la apertura: necesidad, pregunta y ficha del dataset.
+2. Pasar a **"Resumen del periodo"** y señalar las cuatro tarjetas de indicadores (rentas, promedio, mediana, horas).
 3. Clic en **"2 · Franjas horarias"** → leer el 33,4 % y el 47,7 %.
 4. Clic en **"3 · Tipo de día"** → los dos gráficos de barras y el perfil horario.
 5. Clic en **"4 · Temporada y año"** → barras por temporada y por año.
 6. Clic en **"5 · Clima y temperatura"** → barras de clima y línea de temperatura.
 7. **Aplicar un filtro en vivo** (opcional, si sobra tiempo): quitar "Invierno" y "Primavera" en Temporada y mostrar que las cifras cambian.
 8. Clic en **"6 · Casuales y registrados"** → dona y perfiles.
-9. Volver a "Resumen" para cerrar.
+9. Cerrar en **"Conclusiones y recomendaciones"**: las cuatro tarjetas de conclusión y las recomendaciones. Es la pantalla del cierre; no hay que cambiar de herramienta.
+
+> La app ya tiene apertura y cierre: **no se necesitan diapositivas**. Todo el recorrido ocurre en la misma pestaña.
 
 > Si el tiempo aprieta, saltar los pasos 4 y 5: lo indispensable es 1, 3 y 8.
 

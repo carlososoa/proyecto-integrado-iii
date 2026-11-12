@@ -13,6 +13,7 @@ from streamlit.testing.v1 import AppTest
 
 APP = Path(__file__).resolve().parent / "app.py"
 VISTAS = [
+    "Proyecto y datos",
     "Resumen del periodo",
     "1 · Demanda y reparto del día",
     "2 · Franjas horarias",
@@ -20,6 +21,7 @@ VISTAS = [
     "4 · Temporada y año",
     "5 · Clima y temperatura",
     "6 · Casuales y registrados",
+    "Conclusiones y recomendaciones",
 ]
 
 fallos = 0
