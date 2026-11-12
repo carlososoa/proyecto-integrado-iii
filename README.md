@@ -225,8 +225,7 @@ temporada, tipo de día y clima) recalculan todos los indicadores y gráficos.
 - **Prueba de la interfaz:** `python AE4/probar_app.py` ejecuta las siete vistas
   con el `AppTest` de Streamlit y reporta cualquier excepción.
 
-Aplicación publicada: _(enlace de Streamlit Community Cloud — se agrega al
-desplegar desde este repositorio)._
+**Aplicación publicada:** <https://proyecto-integrado-iii-team3-preica2602b020038.streamlit.app/>
 
 El notebook de la AE3 regenera en cada ejecución:
 

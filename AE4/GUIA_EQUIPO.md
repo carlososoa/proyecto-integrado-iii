@@ -83,6 +83,8 @@ que ya existían. Ejemplos:
 | **AE3** | Transformar, enriquecer y generar las **17 tablas de resultados** | `AE3/notebooks/`, `AE3/resultados/*.csv`, `dataset_preparado.csv` |
 | **AE4** | Métricas, app en Streamlit y documento integral | `AE4/app.py`, `AE4/metricas.py` |
 
+**Aplicación publicada:** <https://proyecto-integrado-iii-team3-preica2602b020038.streamlit.app/>
+
 Un solo repositorio para todo el periodo: **https://github.com/carlososoa/proyecto-integrado-iii**
 
 ---
